@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BIUM - Empty Your Fridge. Fill Your Table.</title>
+    <meta name="description" content="냉장고는 비우고, 식탁은 채우다. 냉장고 파먹기를 위한 똑똑하고 아름다운 레시피 솔루션, 비움(BIUM)">
+    
+    <!-- Open Graph / SEO -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="BIUM - 비움">
+    <meta property="og:description" content="Empty Your Fridge. Fill Your Table. (냉장고는 비우고, 식탁은 채우다.)">
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+    <!-- Header & Navigation -->
+    <header class="header">
+        <div class="header-container">
+            <a href="#" class="logo" id="logo-btn">
+                <span class="logo-accent">B</span>IUM
+            </a>
+            
+            <nav class="nav-links">
+                <button class="nav-tab active" data-tab="all" id="tab-all">전체메뉴</button>
+                <button class="nav-tab" data-tab="quick" id="tab-quick">10분한끼</button>
+                <button class="nav-tab" data-tab="fit" id="tab-fit">핏한끼</button>
+                <button class="nav-tab" data-tab="fridge" id="tab-fridge">냉털</button>
+                <button class="nav-tab" data-tab="popular" id="tab-popular">인기메뉴</button>
+            </nav>
+            
+            <div class="header-actions">
+                <button class="fridge-badge-btn" id="fridge-shortcut-btn" title="나의 냉장고">
+                    <i class="fa-solid fa-kitchen-set"></i>
+                    <span class="badge-count" id="fridge-count">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <div class="slogan-badge">
+                <span class="badge-dot"></span> BIUM RECIPE SYSTEM
+            </div>
+            <h1 class="hero-title">
+                Empty Your Fridge.<br>
+                <span class="gold-text">Fill Your Table.</span>
+            </h1>
+            <p class="hero-subtitle">
+                냉장고는 비우고, 식탁은 채우다. 남은 식재료를 입력하고 맞춤형 미식 레시피를 만나보세요.
+            </p>
+            <div class="hero-buttons">
+                <button class="btn btn-primary" id="hero-fridge-btn">
+                    <i class="fa-solid fa-refrigerator"></i> 냉장고 털기 시작
+                </button>
+                <button class="btn btn-outline" id="hero-popular-btn">
+                    <i class="fa-solid fa-fire"></i> 인기 레시피 보기
+                </button>
+            </div>
+        </div>
+        
+        <!-- Animated floating ingredients backdrops -->
+        <div class="floating-elements">
+            <div class="floating-item item-1">🥑</div>
+            <div class="floating-item item-2">🥩</div>
+            <div class="floating-item item-3">🥬</div>
+            <div class="floating-item item-4">🥚</div>
+            <div class="floating-item item-5">🌶️</div>
+            <div class="floating-item item-6">🍞</div>
+        </div>
+    </section>
+
+    <!-- Main Section Container -->
+    <main class="main-container">
+        
+        <!-- Recipe Search and Filters -->
+        <div class="filter-section" id="filter-section-container">
+            <div class="search-bar-wrapper">
+                <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                <input type="text" id="recipe-search-input" placeholder="레시피 이름 또는 식재료 검색...">
+                <button class="clear-search-btn" id="clear-search"><i class="fa-solid fa-xmark"></i></button>
+            </div>
+            
+            <div class="filter-pills" id="diet-filters">
+                <button class="filter-pill active" data-filter="all">전체보기</button>
+                <button class="filter-pill" data-filter="high-protein">단백질 가득</button>
+                <button class="filter-pill" data-filter="low-calorie">가벼운 식사</button>
+                <button class="filter-pill" data-filter="easy">초간단 요리</button>
+            </div>
+        </div>
+
+        <!-- Tab Views content -->
+        
+        <!-- Grid Views (10분한끼, 핏한끼, 인기메뉴 & 전체보기) -->
+        <div class="recipe-grid-container active-view" id="recipe-grid-view">
+            <h2 class="section-title" id="grid-view-title">추천 레시피</h2>
+            <div class="recipe-grid" id="recipe-grid">
+                <!-- Recipe Cards will be dynamically generated by JS -->
+            </div>
+        </div>
+
+        <!-- Fridge Raid View (냉털) -->
+        <div class="fridge-view-container" id="fridge-view">
+            <h2 class="section-title">똑똑한 냉장고 파먹기 <span class="accent-text">냉.털</span></h2>
+            <p class="section-desc">현재 보유하고 있는 식재료를 체크해보세요! 만들 수 있는 최적의 레시피를 실시간 매칭해 드립니다.</p>
+            
+            <div class="fridge-grid-layout">
+                <!-- Left Column: Visual Fridge -->
+                <div class="fridge-visual-card">
+                    <div class="fridge-header-inner">
+                        <i class="fa-solid fa-kitchen-set text-gold"></i> BIUM 스마트 냉장고
+                    </div>
+                    
+                    <!-- Search inside fridge -->
+                    <div class="fridge-search-wrapper">
+                        <input type="text" id="fridge-ingredient-search" placeholder="재료 검색 및 직접 추가...">
+                        <button id="add-custom-ingredient-btn"><i class="fa-solid fa-plus"></i></button>
+                    </div>
+
+                    <!-- Shelf Visual container -->
+                    <div class="fridge-container-visual">
+                        <!-- Freezer shelf -->
+                        <div class="fridge-shelf" id="shelf-freezer">
+                            <span class="shelf-label"><i class="fa-solid fa-snowflake"></i> 냉동실 (Proteins)</span>
+                            <div class="shelf-ingredients" id="ingredients-freezer">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                        
+                        <!-- Fridge shelf 1 -->
+                        <div class="fridge-shelf" id="shelf-fridge-1">
+                            <span class="shelf-label"><i class="fa-solid fa-droplet"></i> 냉장실 상단 (Veggies & Fruits)</span>
+                            <div class="shelf-ingredients" id="ingredients-veggies">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+
+                        <!-- Fridge shelf 2 -->
+                        <div class="fridge-shelf" id="shelf-fridge-2">
+                            <span class="shelf-label"><i class="fa-solid fa-egg"></i> 냉장실 하단 (Dairy & Pantry)</span>
+                            <div class="shelf-ingredients" id="ingredients-dairy">
+                                <!-- Generated by JS -->
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="fridge-actions-bottom">
+                        <button class="btn btn-outline btn-sm" id="reset-fridge-btn">
+                            <i class="fa-solid fa-rotate-left"></i> 전체 비우기
+                        </button>
+                        <button class="btn btn-primary btn-sm" id="recommend-recipes-btn">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> 꿀조합 레시피 찾기
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Matching recipes results -->
+                <div class="fridge-results-card">
+                    <div class="fridge-header-inner">
+                        <span><i class="fa-solid fa-clipboard-list text-green"></i> 냉털 매칭 레시피</span>
+                        <span class="matched-count-badge" id="matched-count">0개 매칭됨</span>
+                    </div>
+                    
+                    <div class="fridge-matching-list" id="fridge-matching-list">
+                        <!-- Dynamically filled with matching recipes -->
+                        <div class="empty-state">
+                            <i class="fa-solid fa-carrot empty-icon"></i>
+                            <p>냉장고 속 재료를 선택하시면<br>가장 알맞은 레시피를 실시간 추천해 줍니다.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Detail Modal -->
+    <div class="modal-overlay" id="recipe-modal">
+        <div class="modal-card">
+            <button class="modal-close" id="modal-close-btn" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            
+            <div class="modal-header-hero" id="modal-hero-img" style="background-image: url('images/avocado_toast.jpg')">
+                <div class="modal-header-overlay"></div>
+                <div class="modal-header-content">
+                    <span class="modal-badge" id="modal-category">10분한끼</span>
+                    <h3 class="modal-title" id="modal-recipe-title">아보카도 에그 토스트</h3>
+                    <p class="modal-desc" id="modal-recipe-desc">바쁜 아침 10분만에 고급스러운 브런치를 식탁 위에 완성하세요.</p>
+                    
+                    <div class="modal-meta-row">
+                        <span><i class="fa-regular fa-clock"></i> <span id="modal-time">10</span>분</span>
+                        <span><i class="fa-regular fa-star"></i> <span id="modal-rating">4.8</span></span>
+                        <span><i class="fa-regular fa-heart"></i> <span id="modal-likes">124</span></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="modal-body-content">
+                <!-- Left Col: Ingredients & Serving adjust -->
+                <div class="modal-left-col">
+                    <div class="serving-adjust-card">
+                        <span class="card-label">기준 인원 조절</span>
+                        <div class="serving-controls">
+                            <button class="serving-btn" id="serving-minus"><i class="fa-solid fa-minus"></i></button>
+                            <span class="serving-val" id="serving-val">1</span>인분
+                            <button class="serving-btn" id="serving-plus"><i class="fa-solid fa-plus"></i></button>
+                        </div>
+                    </div>
+                    
+                    <div class="detail-section">
+                        <h4 class="detail-section-title"><i class="fa-solid fa-list-check"></i> 필요 재료</h4>
+                        <p class="ingredients-helper">구비된 재료는 체크해서 지워보세요.</p>
+                        <ul class="ingredients-list" id="modal-ingredients-list">
+                            <!-- JS Generated -->
+                        </ul>
+                    </div>
+
+                    <!-- Macro nutrition info if exists -->
+                    <div class="detail-section" id="modal-nutrition-section">
+                        <h4 class="detail-section-title"><i class="fa-solid fa-chart-pie"></i> 영양 성분 (1인분 기준)</h4>
+                        <div class="nutrition-summary">
+                            <div class="nutrition-macro">
+                                <span class="macro-name">칼로리</span>
+                                <span class="macro-val" id="macro-calories">320 kcal</span>
+                                <div class="macro-progress"><div class="macro-progress-bar" id="bar-calories" style="width: 60%"></div></div>
+                            </div>
+                            <div class="nutrition-macro-grid">
+                                <div class="nutrition-mini-macro">
+                                    <span class="mini-name">탄수화물</span>
+                                    <span class="mini-val" id="macro-carbs">24g</span>
+                                </div>
+                                <div class="nutrition-mini-macro">
+                                    <span class="mini-name">단백질</span>
+                                    <span class="mini-val" id="macro-protein">12g</span>
+                                </div>
+                                <div class="nutrition-mini-macro">
+                                    <span class="mini-name">지방</span>
+                                    <span class="mini-val" id="macro-fat">20g</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Col: Cooking Steps & Active Timer -->
+                <div class="modal-right-col">
+                    <!-- Cooking Steps -->
+                    <div class="detail-section">
+                        <h4 class="detail-section-title"><i class="fa-solid fa-utensils"></i> 조리 순서</h4>
+                        <ol class="steps-list" id="modal-steps-list">
+                            <!-- JS Generated -->
+                        </ol>
+                    </div>
+
+                    <!-- Interactive cooking timer -->
+                    <div class="timer-section-card" id="recipe-timer-card">
+                        <div class="timer-title-row">
+                            <span><i class="fa-solid fa-hourglass-half fa-spin-pulse text-gold"></i> BIUM 요리 타이머</span>
+                            <span class="timer-status-badge" id="timer-status">대기 중</span>
+                        </div>
+                        <div class="timer-display" id="timer-time-display">05:00</div>
+                        <div class="timer-progress-bg">
+                            <div class="timer-progress-fill" id="timer-progress-fill"></div>
+                        </div>
+                        <div class="timer-buttons">
+                            <button class="timer-btn btn-sm btn-outline" id="timer-toggle-btn">시작</button>
+                            <button class="timer-btn btn-sm btn-outline" id="timer-reset-btn" disabled>리셋</button>
+                        </div>
+                    </div>
+                    
+                    <div class="recipe-feedback-row">
+                        <button class="btn btn-outline like-btn-interactive" id="modal-like-btn">
+                            <i class="fa-solid fa-heart" id="modal-like-icon"></i> <span id="modal-like-text">좋아요</span>
+                        </button>
+                        <div class="recipe-star-rating" id="modal-star-rating">
+                            <span class="star-rating-label">이 레시피 평가하기:</span>
+                            <div class="stars" id="star-rating-interactive">
+                                <i class="fa-regular fa-star" data-star="1"></i>
+                                <i class="fa-regular fa-star" data-star="2"></i>
+                                <i class="fa-regular fa-star" data-star="3"></i>
+                                <i class="fa-regular fa-star" data-star="4"></i>
+                                <i class="fa-regular fa-star" data-star="5"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating Audio Element for Timer Finish -->
+    <audio id="timer-sound" src="https://assets.mixkit.co/active_storage/sfx/2869/2869-84.wav" preload="auto"></audio>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-brand">
+                <span class="logo-accent">B</span>IUM
+                <p class="footer-slogan">Empty Your Fridge. Fill Your Table.</p>
+                <p class="footer-slogan-kor">냉장고는 비우고, 식탁은 채우다.</p>
+            </div>
+            
+            <div class="footer-links">
+                <div class="footer-link-group">
+                    <h4>카테고리</h4>
+                    <a href="#" class="footer-tab-link" data-tab="quick">10분한끼</a>
+                    <a href="#" class="footer-tab-link" data-tab="fit">핏한끼</a>
+                    <a href="#" class="footer-tab-link" data-tab="fridge">냉털 (냉장고 파먹기)</a>
+                    <a href="#" class="footer-tab-link" data-tab="popular">인기메뉴</a>
+                </div>
+                <div class="footer-link-group">
+                    <h4>서비스 소개</h4>
+                    <a href="#">브랜드 스토리</a>
+                    <a href="#">이용약관</a>
+                    <a href="#">개인정보처리방침</a>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 BIUM Inc. All rights reserved. Designed for gourmet dining and Zero-Waste kitchens.</p>
+        </div>
+    </footer>
+
+    <!-- Custom JS -->
+    <script src="app.js"></script>
+</body>
+</html>

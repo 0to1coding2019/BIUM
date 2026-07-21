@@ -1,0 +1,15 @@
+{
+  "name": "bium",
+  "version": "1.0.0",
+  "description": "Empty Your Fridge. Fill Your Table. (냉장고는 비우고, 식탁은 채우다.)",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "vite": "^4.4.9"
+  }
+}
