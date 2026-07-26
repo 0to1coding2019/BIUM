@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+User-agent: Mediapartners-Google
+Allow: /
+
+User-agent: Googlebot
+Allow: /
+
+Sitemap: https://0to1coding2019.github.io/BIUM/sitemap.xml

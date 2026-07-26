@@ -1956,3 +1956,184 @@ button {
     }
 }
 
+/* --- Storage Guides & Encyclopedia View --- */
+.guides-view-container {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+    animation: fadeIn 0.5s ease-out;
+}
+
+.guides-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.guides-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-bottom: 3rem;
+}
+
+.guide-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-lg);
+    padding: 1.8rem;
+    transition: var(--transition-smooth);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.guide-card:hover {
+    transform: translateY(-5px);
+    border-color: var(--accent-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5), var(--glow-gold);
+}
+
+.guide-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.guide-category-badge {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    background: rgba(212, 175, 55, 0.1);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.guide-read-time {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.guide-card-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+}
+
+.guide-card-summary {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.guide-card-footer {
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 1rem;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.guide-read-more {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent-gold);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    transition: var(--transition-smooth);
+}
+
+.guide-card:hover .guide-read-more {
+    color: var(--accent-gold-light);
+    transform: translateX(4px);
+}
+
+/* --- AdSense Placement Containers --- */
+.adsense-banner-container {
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.adsense-banner-container.style-margin-top {
+    margin-top: 4rem;
+}
+
+.adsense-unit-wrapper {
+    background: rgba(18, 24, 19, 0.4);
+    border: 1px dashed rgba(212, 175, 55, 0.25);
+    border-radius: var(--radius-md);
+    padding: 1.2rem 1rem;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+}
+
+.adsense-label {
+    display: block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+}
+
+/* --- Replacement Tip Box --- */
+.replacement-tip-box {
+    background: rgba(212, 175, 55, 0.08);
+    border-left: 3px solid var(--accent-gold);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1.2rem;
+    font-size: 0.9rem;
+    color: var(--text-primary);
+    line-height: 1.6;
+}
+
+/* --- Sitemap Modal Styles --- */
+.sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.sitemap-col-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--accent-gold);
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--border-light);
+}
+
+.sitemap-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+}
+
+.sitemap-link {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+    transition: var(--transition-smooth);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.sitemap-link:hover {
+    color: var(--accent-gold-light);
+    transform: translateX(4px);
+}
+
+

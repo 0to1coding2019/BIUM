@@ -1,5 +1,5 @@
 // BIUM - Empty Your Fridge. Fill Your Table.
-// Core Web Application Logic
+// Core Web Application Logic with AdSense High-Quality Compliance & Permalinks
 
 // --- 1. Recipe Database ---
 const RECIPE_DATA = [
@@ -15,13 +15,14 @@ const RECIPE_DATA = [
         likes: 124,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 300, // 5 min for cooking eggs/toast prep
+        timerSeconds: 300,
         nutrition: {
             calories: 320,
             carbs: 24,
             protein: 12,
             fat: 20
         },
+        replacementTips: "아보카도가 없다면 으깬 바나나나 크림치즈를 사용해도 고소한 브런치를 만드실 수 있습니다.",
         ingredients: [
             { name: "식빵", quantity: 1, unit: "장" },
             { name: "아보카도", quantity: 0.5, unit: "개" },
@@ -51,13 +52,14 @@ const RECIPE_DATA = [
         likes: 312,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 180, // 3 min
+        timerSeconds: 180,
         nutrition: {
             calories: 380,
             carbs: 55,
             protein: 10,
             fat: 12
         },
+        replacementTips: "버터 대신 마가린이나 들기름을 사용해도 깊은 풍미를 내실 수 있습니다.",
         ingredients: [
             { name: "밥", quantity: 1, unit: "공기" },
             { name: "계란", quantity: 2, unit: "개" },
@@ -87,13 +89,14 @@ const RECIPE_DATA = [
         likes: 256,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 0, // No cooking needed (raw/prep assembly)
+        timerSeconds: 0,
         nutrition: {
             calories: 450,
             carbs: 35,
             protein: 28,
             fat: 22
         },
+        replacementTips: "훈제연어 대신 캔참치나 자숙 닭가슴살을 찢어 넣어 포케로 만드셔도 훌륭합니다.",
         ingredients: [
             { name: "훈제연어", quantity: 100, unit: "g" },
             { name: "아보카도", quantity: 0.5, unit: "개" },
@@ -124,13 +127,14 @@ const RECIPE_DATA = [
         likes: 189,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 420, // 7 min steaming
+        timerSeconds: 420,
         nutrition: {
             calories: 220,
             carbs: 12,
             protein: 26,
             fat: 4
         },
+        replacementTips: "닭가슴살 대신 두부나 다진 돼지고기를 쪄서 쌈을 싸면 풍미가 더욱 좋아집니다.",
         ingredients: [
             { name: "닭가슴살", quantity: 120, unit: "g" },
             { name: "양배추", quantity: 6, unit: "잎" },
@@ -159,13 +163,14 @@ const RECIPE_DATA = [
         likes: 412,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 480, // 8 min
+        timerSeconds: 480,
         nutrition: {
             calories: 520,
             carbs: 70,
             protein: 15,
             fat: 18
         },
+        replacementTips: "베이컨 대신 통조림 햄(스팸)이나 돼지고기 목살, 참치를 넣으셔도 매우 맛있습니다.",
         ingredients: [
             { name: "김치", quantity: 1, unit: "컵 (잘게 썬 것)" },
             { name: "밥", quantity: 1, unit: "공기" },
@@ -197,13 +202,14 @@ const RECIPE_DATA = [
         likes: 654,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 600, // 10 min cooking + resting
+        timerSeconds: 600,
         nutrition: {
             calories: 680,
             carbs: 2,
             protein: 48,
             fat: 52
         },
+        replacementTips: "등심 대신 안심이나 채끝살, 찹스테이크용 부위를 활용해도 훌륭합니다.",
         ingredients: [
             { name: "소고기 등심", quantity: 250, unit: "g" },
             { name: "마늘", quantity: 4, unit: "쪽" },
@@ -217,7 +223,7 @@ const RECIPE_DATA = [
             "등심 스테이크용 고기는 조리 30분 전 냉장고에서 꺼내 실온에 두고, 소금과 후추, 올리브오일로 사방을 코팅하듯 밑간해 둡니다.",
             "팬을 연기가 살짝 날 정도로 아주 강한 불에 달군 뒤, 올리브오일을 두르고 고기를 올립니다.",
             "고기 겉면이 바삭하고 짙은 갈색빛(마이야르 반응)이 돌 때까지 한 면당 1분 30초씩 시어링합니다.",
-            "고기를 뒤집을 때 버터, 으깬 마늘, 로즈마리를 넣고 약불로 줄인 뒤 팬을 기울여 숟가락으로 녹은 버터를 고기 위에 반복해서 끼얹어 줍니다 (아로제 베이팅).",
+            "고기를 뒤집을 때 버터, 으깬 마늘, 로즈마리를 넣고 약불로 줄인 뒤 팬을 기울여 숟가락으로 녹은 버터를 고기 위에 반복해서 끼얹어 줍니다.",
             "원하는 굽기 정도로 구워지면 팬에서 꺼내 도마 위에 올려 5분간 레스팅(Resting)하여 육즙을 가두어 준 후 먹기 좋게 슬라이스해 서빙합니다."
         ],
         filters: ["high-protein"]
@@ -234,13 +240,14 @@ const RECIPE_DATA = [
         likes: 288,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 540, // 9 min
+        timerSeconds: 540,
         nutrition: {
             calories: 460,
             carbs: 48,
             protein: 16,
             fat: 22
         },
+        replacementTips: "부침가루가 없다면 밀가루와 튀김가루를 7:3 비율로 섞고 탄산수를 넣으면 더욱 바삭합니다.",
         ingredients: [
             { name: "김치", quantity: 1, unit: "컵" },
             { name: "부침가루", quantity: 1, unit: "컵" },
@@ -269,13 +276,14 @@ const RECIPE_DATA = [
         likes: 498,
         isLiked: false,
         userRating: 0,
-        timerSeconds: 600, // 10 min
+        timerSeconds: 600,
         nutrition: {
             calories: 590,
             carbs: 85,
             protein: 12,
             fat: 24
         },
+        replacementTips: "생크림 대신 우유와 슬라이스 치즈 2장을 넣으셔도 부드러운 로제 맛을 구현할 수 있습니다.",
         ingredients: [
             { name: "떡볶이 떡", quantity: 200, unit: "g" },
             { name: "어묵", quantity: 2, unit: "장" },
@@ -296,20 +304,97 @@ const RECIPE_DATA = [
     }
 ];
 
-// --- 2. Default Fridge Shelf Ingredients ---
+// --- 2. Zero-Waste Storage Guides Database ---
+const GUIDE_DATA = [
+    {
+        id: "storage-encyclopedia",
+        icon: "fa-leaf",
+        category: "보관 백과",
+        title: "야채 & 채소류 냉장·냉동 장기 보관법 완벽 백과",
+        summary: "양파, 대파, 마늘, 양배추, 아보카도 등 금방 무르는 채소를 무려 3배 이상 길게 신선하게 보관하는 습도 제어 및 소분 노하우.",
+        readTime: "4분 읽기",
+        content: `
+            <h4>1. 대파 & 양파의 수명 3배 연장법</h4>
+            <p>대파는 물에 씻지 않은 상태에서 흙만 털어내고 3등분하여 용기 바닥에 키친타올을 깔고 세워서 냉장 보관하면 한 달 이상 싱싱함이 유지됩니다. 깐 양파는 하나씩 랩으로 촘촘히 싸서 밀폐용기에 담으면 수분 손실과 부패를 예방합니다.</p>
+            
+            <h4>2. 양배추 & 잎채소 수분 제어 꿀팁</h4>
+            <p>양배추는 칼로 칼집을 내어 심지 부분을 도려낸 후, 물에 적신 키친타올을 심지 자리에 박아 넣고 랩으로 감싸주면 두 달 가량 무르지 않고 신선합니다.</p>
+            
+            <h4>3. 후숙 과일(아보카도, 토마토) 상태별 보관</h4>
+            <p>아보카도는 은박지(알루미늄 폼)에 싸서 냉장실 야채칸에 넣으면 갈변 속도를 현저히 늦출 수 있으며, 손질 후 남은 반쪽은 단면에 올리브오일을 약간 발라 밀폐 보관하세요.</p>
+        `
+    },
+    {
+        id: "meat-seafood-storage",
+        icon: "fa-drumstick-bite",
+        category: "소분 & 해동",
+        title: "육류 & 해산물 소분 보관 및 안전 해동 가이드",
+        summary: "세균 번식을 막는 냉동실 소분 지퍼백 포장법과 육즙 손실을 최소화하는 드립(Drip) 방지 해동 꿀팁.",
+        readTime: "5분 읽기",
+        content: `
+            <h4>1. 소고기 & 돼지고기 올리브오일 코팅 보관</h4>
+            <p>고기를 냉동하기 전 올리브오일을 겉면에 얇게 바르고 오일지나 랩으로 포장하면 공기 접촉(산화)을 차단하여 냉동실 냄새 흡수 및 냉동 상처(Freezer Burn)를 막아줍니다.</p>
+
+            <h4>2. 해산물(연어, 새우) 해동의 금기사항</h4>
+            <p>해산물이나 고기를 전자레인지나 따뜻한 물로 급속 해동하면 세균이 증식하고 육즙이 모두 빠져나가 질겨집니다. 조리 하루 전 냉장실로 옮기는 '유지 해동'이나 얼음물에 봉지째 담그는 방법이 가장 안전합니다.</p>
+
+            <h4>3. 베이컨 & 다짐육 한 끼 분량 롤핑 스킬</h4>
+            <p>베이컨은 종이호일 위에 하나씩 펼쳐 김밥처럼 돌돌 말아 지퍼백에 넣으면 필요한 수량만 쏙쏙 꺼내 쓰기 편합니다.</p>
+        `
+    },
+    {
+        id: "zero-waste-kitchen",
+        icon: "fa-recycle",
+        category: "제로웨이스트",
+        title: "남은 식재료 쓰레기 제로(Zero-Waste) 실천 5계명",
+        summary: "자취생부터 4인 가구까지 주방에서 버려지는 식재료를 0%로 줄여 식비를 매달 15만 원 이상 절감하는 습관.",
+        readTime: "3분 읽기",
+        content: `
+            <h4>제 1 계명: 냉장고 재료 지도를 작성하라</h4>
+            <p>MIUM 스마트 냉장고 탭에 보유 재료를 체크해두어 어떤 재료가 얼마 남아있는지 수시로 확인하고 유통기한 임박 재료부터 우선 요리합니다.</p>
+
+            <h4>제 2 계명: 짜투리 채소는 야채수(Broth) 또는 볶음밥용으로 모으기</h4>
+            <p>당근 꼬미, 양파 껍질, 대파 뿌리는 깨끗이 씻어 냉동실 모음 통에 넣어두었다가 육수를 낼 때 넣으면 시원하고 깊은 감칠맛을 만듭니다.</p>
+
+            <h4>제 3 계명: 원형 식재료(Whole Food) 위주로 구매하기</h4>
+            <p>밀키트나 다듬어진 소포장보다 원형 상태의 재료를 사서 직접 소분하면 가격도 절반 이하로 저렴하고 보관 기간도 3배 길어집니다.</p>
+        `
+    },
+    {
+        id: "nutrition-fit-guide",
+        icon: "fa-heart-pulse",
+        category: "영양 식단",
+        title: "탄단지 밸런스와 칼로리 조절을 위한 핏(Fit) 식단 가이드",
+        summary: "굶지 않는 다이어트! 탄수화물, 단백질, 지방 비율을 4:3:3으로 맞추어 건강한 에너지와 포만감을 유지하는 영양 공식.",
+        readTime: "4분 읽기",
+        content: `
+            <h4>1. 손바닥(Palm) 계량법으로 한 끼 완성하기</h4>
+            <p>복잡한 저울 없이 한 끼 식단을 구성해보세요: 단백질(닭가슴살/두부/연어)은 본인 손바닥 크기 1개, 채소는 양손 가득, 탄수화물(현미밥/고구마)은 주먹 1개 크기가 골든 밸런스입니다.</p>
+
+            <h4>2. 혈당 스파이크를 막는 식사 순서</h4>
+            <p>같은 음식도 섭취 순서에 따라 지방 축적 비율이 달라집니다. [식이섬유(채소) ➔ 단백질/지방 ➔ 탄수화물] 순서로 섭취하면 인슐린 분비가 안정되어 체지방 축적을 방지합니다.</p>
+
+            <h4>3. 수분 섭취와 염분 조절의 연관성</h4>
+            <p>하루 2리터 이상의 물을 섭취하면 나트륨 배출이 촉진되고 신진대사율이 올라가 하루 100kcal 이상의 칼로리가 자연 소모됩니다.</p>
+        `
+    }
+];
+
+// --- 3. Default Fridge Shelf Ingredients ---
 const DEFAULT_SHELF_INGREDIENTS = {
     freezer: ['소고기 등심', '훈제연어', '닭가슴살', '베이컨', '어묵'],
     veggies: ['아보카도', '김치', '오이', '에다마메', '양배추', '대파', '마늘', '로즈마리'],
     dairy: ['식빵', '계란', '밥', '현미밥', '떡볶이 떡', '버터', '생크림', '모짜렐라 치즈', '참기름', '간장', '고추장', '부침가루']
 };
 
-// --- 3. App State Management ---
+// --- 4. App State Management ---
 const state = {
     currentTab: 'all',
     searchQuery: '',
     dietFilter: 'all',
     fridgeIngredients: new Set(),
     activeModalRecipe: null,
+    activeModalGuide: null,
     servingSize: 1,
     // Timer states
     timerInterval: null,
@@ -318,17 +403,22 @@ const state = {
     timerIsRunning: false
 };
 
-// --- 4. Initialization ---
+// --- 5. Initialization ---
 document.addEventListener('DOMContentLoaded', () => {
     loadLocalStorage();
     initThemeAndVisuals();
     renderFridgeShelves();
     renderRecipeGrid();
+    renderStorageGuides();
     setupEventListeners();
     updateFridgeCount();
+
+    // Route based on URL hash
+    window.addEventListener('hashchange', handleHashRoute);
+    handleHashRoute();
 });
 
-// Load state from local storage (if existing)
+// Load state from local storage
 function loadLocalStorage() {
     const savedIngredients = localStorage.getItem('bium_fridge_ingredients');
     if (savedIngredients) {
@@ -380,7 +470,6 @@ function saveState() {
 
 // Initial design adjustments
 function initThemeAndVisuals() {
-    // Add page load effects
     document.body.style.opacity = '0';
     setTimeout(() => {
         document.body.style.transition = 'opacity 0.6s ease';
@@ -388,7 +477,36 @@ function initThemeAndVisuals() {
     }, 100);
 }
 
-// --- 5. Render Functions ---
+// Handle hash navigation
+function handleHashRoute() {
+    const rawHash = window.location.hash.replace('#', '');
+    if (!rawHash) {
+        switchTab('all', false);
+        return;
+    }
+
+    if (rawHash.startsWith('recipe/')) {
+        const recipeId = rawHash.replace('recipe/', '');
+        openRecipeModal(recipeId);
+    } else if (rawHash.startsWith('guide/')) {
+        const guideId = rawHash.replace('guide/', '');
+        openGuideModal(guideId);
+    } else if (rawHash === 'privacy') {
+        openPolicyModal('privacy-modal');
+    } else if (rawHash === 'terms') {
+        openPolicyModal('terms-modal');
+    } else if (rawHash === 'story') {
+        openPolicyModal('story-modal');
+    } else if (rawHash === 'disclaimer') {
+        openPolicyModal('disclaimer-modal');
+    } else if (rawHash === 'sitemap') {
+        openPolicyModal('sitemap-modal');
+    } else if (['all', 'quick', 'fit', 'fridge', 'guides', 'popular', 'partner'].includes(rawHash)) {
+        switchTab(rawHash, false);
+    }
+}
+
+// --- 6. Render Functions ---
 
 // Render shelves elements in 냉털 View
 function renderFridgeShelves() {
@@ -398,7 +516,6 @@ function renderFridgeShelves() {
 
     if (!freezerContainer || !veggiesContainer || !dairyContainer) return;
 
-    // Helper to generate chip markup
     const getChipHTML = (name) => {
         const isActive = state.fridgeIngredients.has(name) ? 'active' : '';
         const checkIcon = isActive ? 'fa-circle-check' : 'fa-circle';
@@ -413,9 +530,8 @@ function renderFridgeShelves() {
     veggiesContainer.innerHTML = DEFAULT_SHELF_INGREDIENTS.veggies.map(getChipHTML).join('');
     dairyContainer.innerHTML = DEFAULT_SHELF_INGREDIENTS.dairy.map(getChipHTML).join('');
 
-    // Attach listeners to chips
     document.querySelectorAll('.ingredient-chip').forEach(chip => {
-        chip.addEventListener('click', (e) => {
+        chip.addEventListener('click', () => {
             const name = chip.getAttribute('data-name');
             toggleFridgeIngredient(name, chip);
         });
@@ -427,23 +543,19 @@ function renderRecipeGrid() {
     const grid = document.getElementById('recipe-grid');
     if (!grid) return;
 
-    // Filter recipes
     const filtered = RECIPE_DATA.filter(recipe => {
-        // Tab category filter
         if (state.currentTab !== 'all') {
             if (state.currentTab === 'quick' && recipe.category !== 'quick') return false;
             if (state.currentTab === 'fit' && recipe.category !== 'fit') return false;
             if (state.currentTab === 'popular' && recipe.category !== 'popular' && recipe.likes < 300) return false;
         }
 
-        // Sub diet/quick filter pills
         if (state.dietFilter !== 'all') {
             if (state.dietFilter === 'high-protein' && !recipe.filters.includes('high-protein')) return false;
             if (state.dietFilter === 'low-calorie' && !recipe.filters.includes('low-calorie')) return false;
             if (state.dietFilter === 'easy' && !recipe.filters.includes('easy')) return false;
         }
 
-        // Search text filter
         if (state.searchQuery.trim() !== '') {
             const q = state.searchQuery.toLowerCase();
             const titleMatch = recipe.title.toLowerCase().includes(q);
@@ -455,7 +567,6 @@ function renderRecipeGrid() {
         return true;
     });
 
-    // Populate grid
     if (filtered.length === 0) {
         grid.innerHTML = `
             <div class="empty-state" style="grid-column: 1 / -1; height: 250px;">
@@ -494,10 +605,8 @@ function renderRecipeGrid() {
         `;
     }).join('');
 
-    // Attach click events to cards
     grid.querySelectorAll('.recipe-card').forEach(card => {
         card.addEventListener('click', (e) => {
-            // Check if user clicked heart button
             if (e.target.closest('.card-heart-btn')) {
                 const id = card.getAttribute('data-id');
                 const btn = card.querySelector('.card-heart-btn');
@@ -505,7 +614,34 @@ function renderRecipeGrid() {
                 return;
             }
             const id = card.getAttribute('data-id');
-            openRecipeModal(id);
+            window.location.hash = `recipe/${id}`;
+        });
+    });
+}
+
+// Render storage guides in Guides View
+function renderStorageGuides() {
+    const container = document.getElementById('guides-grid');
+    if (!container) return;
+
+    container.innerHTML = GUIDE_DATA.map(guide => `
+        <div class="guide-card" data-id="${guide.id}">
+            <div class="guide-card-header">
+                <span class="guide-category-badge"><i class="fa-solid ${guide.icon}"></i> ${guide.category}</span>
+                <span class="guide-read-time"><i class="fa-regular fa-clock"></i> ${guide.readTime}</span>
+            </div>
+            <h3 class="guide-card-title">${guide.title}</h3>
+            <p class="guide-card-summary">${guide.summary}</p>
+            <div class="guide-card-footer">
+                <span class="guide-read-more">가이드 전체 읽기 <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+        </div>
+    `).join('');
+
+    container.querySelectorAll('.guide-card').forEach(card => {
+        card.addEventListener('click', () => {
+            const guideId = card.getAttribute('data-id');
+            window.location.hash = `guide/${guideId}`;
         });
     });
 }
@@ -527,7 +663,6 @@ function renderFridgeMatchingResults() {
         return;
     }
 
-    // Process matching scores for all recipes
     const matches = RECIPE_DATA.map(recipe => {
         const recipeIngredients = recipe.ingredients.map(ing => ing.name);
         
@@ -535,8 +670,6 @@ function renderFridgeMatchingResults() {
         const missing = [];
 
         recipeIngredients.forEach(reqIng => {
-            // Substring/Fuzzy match check
-            // Check if any active fridge ingredient is contained in the recipe ingredient name (or vice versa)
             let found = false;
             for (let fridgeIng of state.fridgeIngredients) {
                 if (reqIng.includes(fridgeIng) || fridgeIng.includes(reqIng)) {
@@ -548,7 +681,6 @@ function renderFridgeMatchingResults() {
             if (found) {
                 matchCount++;
             } else {
-                // Keep track of primary ingredients (we skip micro ones like '소금', '후추', '물', '올리브오일' for missing tags list)
                 const isCondiment = ['소금', '후추', '물', '올리브오일', '참기름', '간장', '고추장', '부침가루', '통깨', '버터'].includes(reqIng);
                 if (!isCondiment) {
                     missing.push(reqIng);
@@ -557,19 +689,11 @@ function renderFridgeMatchingResults() {
         });
 
         const score = Math.round((matchCount / recipeIngredients.length) * 100);
-        return {
-            recipe,
-            score,
-            missing
-        };
+        return { recipe, score, missing };
     });
 
-    // Sort by match percentage (descending)
     matches.sort((a, b) => b.score - a.score);
-
-    // Filter out matches below 15% to maintain utility
     const suitableMatches = matches.filter(m => m.score >= 15);
-
     countBadge.innerText = `${suitableMatches.length}개 매칭됨`;
 
     if (suitableMatches.length === 0) {
@@ -613,11 +737,10 @@ function renderFridgeMatchingResults() {
         `;
     }).join('');
 
-    // Attach click listeners to matched cards
     listContainer.querySelectorAll('.matching-item-card').forEach(item => {
         item.addEventListener('click', () => {
             const id = item.getAttribute('data-id');
-            openRecipeModal(id);
+            window.location.hash = `recipe/${id}`;
         });
     });
 }
@@ -644,7 +767,6 @@ function toggleFridgeIngredient(name, chipElement) {
     updateFridgeCount();
     saveState();
     
-    // If in 냉털 tab, update results in real-time
     if (state.currentTab === 'fridge') {
         renderFridgeMatchingResults();
     }
@@ -655,7 +777,6 @@ function updateFridgeCount() {
     const badge = document.getElementById('fridge-count');
     if (badge) {
         badge.innerText = state.fridgeIngredients.size;
-        // Bounce animation on update
         badge.style.transform = 'scale(1.3)';
         setTimeout(() => {
             badge.style.transform = 'scale(1)';
@@ -663,7 +784,7 @@ function updateFridgeCount() {
     }
 }
 
-// --- 6. Recipe Details Modal Controller ---
+// --- 7. Modal Controllers ---
 
 function openRecipeModal(recipeId) {
     const recipe = RECIPE_DATA.find(r => r.id === recipeId);
@@ -672,10 +793,8 @@ function openRecipeModal(recipeId) {
     state.activeModalRecipe = recipe;
     state.servingSize = 1;
 
-    // Reset timer
     resetCookingTimer();
 
-    // Populate text content
     document.getElementById('modal-recipe-title').innerText = recipe.title;
     document.getElementById('modal-recipe-desc').innerText = recipe.description;
     document.getElementById('modal-category').innerText = recipe.categoryKo;
@@ -688,25 +807,25 @@ function openRecipeModal(recipeId) {
         heroImg.style.backgroundImage = `url('${recipe.image}')`;
     }
 
-    // Render Serving size
+    const replacementText = document.getElementById('modal-replacement-text');
+    if (replacementText) {
+        replacementText.innerText = recipe.replacementTips || "재료가 부족하면 유사한 재료로 대체해 조리하실 수 있습니다.";
+    }
+
     document.getElementById('serving-val').innerText = state.servingSize;
 
-    // Render ingredients & nutrition
     renderModalIngredients();
     renderModalNutrition();
 
-    // Render steps
     const stepsList = document.getElementById('modal-steps-list');
     if (stepsList) {
         stepsList.innerHTML = recipe.steps.map(step => `
             <li class="step-item">${step}</li>
         `).join('');
         
-        // Add click cross-out listener to steps
         stepsList.querySelectorAll('.step-item').forEach(stepItem => {
             stepItem.addEventListener('click', () => {
                 stepItem.classList.toggle('checked');
-                // subtle style cross-out
                 if (stepItem.classList.contains('checked')) {
                     stepItem.style.opacity = '0.5';
                     stepItem.style.textDecoration = 'line-through';
@@ -718,7 +837,6 @@ function openRecipeModal(recipeId) {
         });
     }
 
-    // Configure Timer visibility
     const timerCard = document.getElementById('recipe-timer-card');
     if (timerCard) {
         if (recipe.timerSeconds > 0) {
@@ -731,7 +849,6 @@ function openRecipeModal(recipeId) {
         }
     }
 
-    // Configure Interactive Likes class
     const modalLikeBtn = document.getElementById('modal-like-btn');
     const modalLikeIcon = document.getElementById('modal-like-icon');
     const modalLikeText = document.getElementById('modal-like-text');
@@ -747,14 +864,12 @@ function openRecipeModal(recipeId) {
         }
     }
 
-    // Configure Stars rating
     renderInteractiveStars(recipe.userRating);
 
-    // Show modal
     const modal = document.getElementById('recipe-modal');
     if (modal) {
         modal.classList.add('active');
-        document.body.style.overflow = 'hidden'; // lock background scroll
+        document.body.style.overflow = 'hidden';
     }
 }
 
@@ -762,15 +877,72 @@ function closeRecipeModal() {
     const modal = document.getElementById('recipe-modal');
     if (modal) {
         modal.classList.remove('active');
-        document.body.style.overflow = 'auto'; // restore scroll
+        document.body.style.overflow = 'auto';
     }
     resetCookingTimer();
     state.activeModalRecipe = null;
     
-    // Re-render grid to reflect any likes changes
+    // Clear hash if it was a recipe hash
+    if (window.location.hash.startsWith('#recipe/')) {
+        history.replaceState(null, null, ' ');
+    }
+
     renderRecipeGrid();
     if (state.currentTab === 'fridge') {
         renderFridgeMatchingResults();
+    }
+}
+
+function openGuideModal(guideId) {
+    const guide = GUIDE_DATA.find(g => g.id === guideId);
+    if (!guide) return;
+
+    state.activeModalGuide = guide;
+
+    const titleEl = document.getElementById('guide-modal-title');
+    const subtitleEl = document.getElementById('guide-modal-subtitle');
+    const bodyEl = document.getElementById('guide-modal-body');
+
+    if (titleEl) titleEl.innerHTML = `<i class="fa-solid ${guide.icon} text-gold"></i> ${guide.title}`;
+    if (subtitleEl) subtitleEl.innerText = `${guide.category} | ${guide.readTime}`;
+    if (bodyEl) bodyEl.innerHTML = guide.content;
+
+    const modal = document.getElementById('guide-detail-modal');
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closeGuideModal() {
+    const modal = document.getElementById('guide-detail-modal');
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    state.activeModalGuide = null;
+
+    if (window.location.hash.startsWith('#guide/')) {
+        history.replaceState(null, null, '#guides');
+    }
+}
+
+function openPolicyModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+    }
+}
+
+function closePolicyModal(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = 'auto';
+    }
+    if (['#privacy', '#terms', '#story', '#disclaimer', '#sitemap'].includes(window.location.hash)) {
+        history.replaceState(null, null, ' ');
     }
 }
 
@@ -781,15 +953,12 @@ function renderModalIngredients() {
     if (!list || !recipe) return;
 
     list.innerHTML = recipe.ingredients.map(ing => {
-        // Calculate scaled quantity
         let qtyText = '';
         if (ing.quantity) {
             const scaledQty = ing.quantity * state.servingSize;
-            // Round nicely to 1 decimal place
             qtyText = Math.round(scaledQty * 10) / 10;
         }
 
-        // Check if user has this ingredient in their fridge to pre-check or highlight
         let hasInFridge = false;
         for (let fridgeIng of state.fridgeIngredients) {
             if (ing.name.includes(fridgeIng) || fridgeIng.includes(ing.name)) {
@@ -811,7 +980,6 @@ function renderModalIngredients() {
         `;
     }).join('');
 
-    // Attach click events to checklist items
     list.querySelectorAll('.ingredient-item').forEach(item => {
         item.addEventListener('click', () => {
             item.classList.toggle('checked');
@@ -819,7 +987,6 @@ function renderModalIngredients() {
     });
 }
 
-// Update nutrition macro progress bars
 function renderModalNutrition() {
     const caloriesVal = document.getElementById('macro-calories');
     const carbsVal = document.getElementById('macro-carbs');
@@ -845,14 +1012,12 @@ function renderModalNutrition() {
     if (proteinVal) proteinVal.innerText = `${recipe.nutrition.protein * state.servingSize}g`;
     if (fatVal) fatVal.innerText = `${recipe.nutrition.fat * state.servingSize}g`;
 
-    // Calories progress percentage relative to average 2000kcal target
     if (barCalories) {
         const percentage = Math.min((scaledCalories / 2000) * 100, 100);
         barCalories.style.width = `${percentage}%`;
     }
 }
 
-// Render active stars inside rating area
 function renderInteractiveStars(rating) {
     const starContainer = document.getElementById('star-rating-interactive');
     if (!starContainer) return;
@@ -867,20 +1032,18 @@ function renderInteractiveStars(rating) {
     });
 }
 
-// Modify serving count
 function changeServing(amount) {
     const newVal = state.servingSize + amount;
-    if (newVal < 1 || newVal > 20) return; // limits
+    if (newVal < 1 || newVal > 20) return;
 
     state.servingSize = newVal;
     document.getElementById('serving-val').innerText = state.servingSize;
     
-    // Re-render
     renderModalIngredients();
     renderModalNutrition();
 }
 
-// --- 7. Cooking Timer Logic ---
+// --- 8. Cooking Timer Logic ---
 
 function updateTimerDisplay() {
     const display = document.getElementById('timer-time-display');
@@ -893,7 +1056,6 @@ function updateTimerDisplay() {
     
     display.innerText = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
 
-    // Fill ratio
     const ratio = ((state.timerTotalSeconds - state.timerTimeLeft) / state.timerTotalSeconds) * 100;
     fill.style.width = `${ratio}%`;
 }
@@ -978,19 +1140,16 @@ function finishCookingTimer() {
     }
     if (toggleBtn) toggleBtn.innerText = '완료';
 
-    // Play chime sound
     const audio = document.getElementById('timer-sound');
     if (audio) {
         audio.play().catch(err => console.log('Audio playback prevented', err));
     }
 
-    // Trigger congratulations particle shower
     triggerTimerFinishParticles();
 }
 
-// --- 8. Micro-interactions & Particles ---
+// --- 9. Micro-interactions & Particles ---
 
-// Pulsing particles glow effect when selecting a chip
 function triggerParticleGlow(element) {
     const rect = element.getBoundingClientRect();
     for (let i = 0; i < 5; i++) {
@@ -1005,7 +1164,6 @@ function triggerParticleGlow(element) {
         particle.style.pointerEvents = 'none';
         particle.style.zIndex = '999';
         
-        // Random velocities
         const vx = (Math.random() - 0.5) * 60;
         const vy = (Math.random() - 0.5) * 60;
 
@@ -1021,7 +1179,6 @@ function triggerParticleGlow(element) {
     }
 }
 
-// Heart fly up animation
 function toggleLike(recipeId, btnElement, event) {
     const recipe = RECIPE_DATA.find(r => r.id === recipeId);
     if (!recipe) return;
@@ -1034,7 +1191,6 @@ function toggleLike(recipeId, btnElement, event) {
         const icon = btnElement.querySelector('i');
         if (icon) icon.className = 'fa-solid fa-heart';
         
-        // Spawn floating heart particles
         spawnFloatingHeart(event.clientX, event.clientY);
     } else {
         recipe.likes--;
@@ -1043,10 +1199,8 @@ function toggleLike(recipeId, btnElement, event) {
         if (icon) icon.className = 'fa-regular fa-heart';
     }
 
-    // Save
     saveState();
 
-    // If modal active, update the likes label inside modal as well
     const modalLikes = document.getElementById('modal-likes');
     const modalLikeBtn = document.getElementById('modal-like-btn');
     const modalLikeText = document.getElementById('modal-like-text');
@@ -1062,13 +1216,12 @@ function toggleLike(recipeId, btnElement, event) {
             } else {
                 modalLikeBtn.classList.remove('liked');
                 modalLikeText.innerText = '좋아요';
-                modalLikeIcon.className = 'fa-solid fa-heart'; // keep base style
+                modalLikeIcon.className = 'fa-solid fa-heart';
             }
         }
     }
 }
 
-// Spawn absolute positioned flying heart element
 function spawnFloatingHeart(x, y) {
     const heart = document.createElement('i');
     heart.className = 'fa-solid fa-heart floating-heart';
@@ -1081,7 +1234,6 @@ function spawnFloatingHeart(x, y) {
     }, 1000);
 }
 
-// Confetti-style particles on timer finish
 function triggerTimerFinishParticles() {
     const modal = document.getElementById('recipe-modal');
     if (!modal) return;
@@ -1102,7 +1254,7 @@ function triggerTimerFinishParticles() {
         const angle = Math.random() * Math.PI * 2;
         const speed = Math.random() * 150 + 50;
         const tx = Math.cos(angle) * speed;
-        const ty = Math.sin(angle) * speed - 50; // shift upward slightly
+        const ty = Math.sin(angle) * speed - 50;
 
         document.body.appendChild(dot);
 
@@ -1116,7 +1268,7 @@ function triggerTimerFinishParticles() {
     }
 }
 
-// --- 9. Event Listeners Setup ---
+// --- 10. Event Listeners Setup ---
 
 function setupEventListeners() {
     
@@ -1124,44 +1276,71 @@ function setupEventListeners() {
     document.querySelectorAll('.nav-tab').forEach(tab => {
         tab.addEventListener('click', () => {
             const targetTab = tab.getAttribute('data-tab');
-            switchTab(targetTab);
+            window.location.hash = targetTab;
         });
     });
 
-    // Logo click resets to 'all' tab
     const logoBtn = document.getElementById('logo-btn');
     if (logoBtn) {
         logoBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            switchTab('all');
+            window.location.hash = 'all';
         });
     }
 
-    // Hero buttons click
     const heroFridgeBtn = document.getElementById('hero-fridge-btn');
     if (heroFridgeBtn) {
-        heroFridgeBtn.addEventListener('click', () => switchTab('fridge'));
+        heroFridgeBtn.addEventListener('click', () => window.location.hash = 'fridge');
     }
 
     const heroPopularBtn = document.getElementById('hero-popular-btn');
     if (heroPopularBtn) {
-        heroPopularBtn.addEventListener('click', () => switchTab('popular'));
+        heroPopularBtn.addEventListener('click', () => window.location.hash = 'popular');
+    }
+
+    const heroGuidesBtn = document.getElementById('hero-guides-btn');
+    if (heroGuidesBtn) {
+        heroGuidesBtn.addEventListener('click', () => window.location.hash = 'guides');
     }
 
     const fridgeShortcutBtn = document.getElementById('fridge-shortcut-btn');
     if (fridgeShortcutBtn) {
-        fridgeShortcutBtn.addEventListener('click', () => switchTab('fridge'));
+        fridgeShortcutBtn.addEventListener('click', () => window.location.hash = 'fridge');
     }
 
     // Footer links click
     document.querySelectorAll('.footer-tab-link').forEach(link => {
         link.addEventListener('click', (e) => {
-            e.preventDefault();
             const target = link.getAttribute('data-tab');
-            switchTab(target);
-            // smooth scroll to top of content
-            document.getElementById('filter-section-container').scrollIntoView({ behavior: 'smooth' });
+            window.location.hash = target;
         });
+    });
+
+    document.getElementById('footer-story-btn')?.addEventListener('click', () => window.location.hash = 'story');
+    document.getElementById('footer-terms-btn')?.addEventListener('click', () => window.location.hash = 'terms');
+    document.getElementById('footer-privacy-btn')?.addEventListener('click', () => window.location.hash = 'privacy');
+    document.getElementById('footer-disclaimer-btn')?.addEventListener('click', () => window.location.hash = 'disclaimer');
+    document.getElementById('footer-sitemap-btn')?.addEventListener('click', () => window.location.hash = 'sitemap');
+    document.getElementById('footer-partner-btn')?.addEventListener('click', () => window.location.hash = 'partner');
+
+    // Policy modals close listeners
+    document.getElementById('privacy-close-btn')?.addEventListener('click', () => closePolicyModal('privacy-modal'));
+    document.getElementById('terms-close-btn')?.addEventListener('click', () => closePolicyModal('terms-modal'));
+    document.getElementById('story-close-btn')?.addEventListener('click', () => closePolicyModal('story-modal'));
+    document.getElementById('disclaimer-close-btn')?.addEventListener('click', () => closePolicyModal('disclaimer-modal'));
+    document.getElementById('sitemap-close-btn')?.addEventListener('click', () => closePolicyModal('sitemap-modal'));
+    document.getElementById('guide-detail-close-btn')?.addEventListener('click', closeGuideModal);
+
+    // Overlay click close
+    ['privacy-modal', 'terms-modal', 'story-modal', 'disclaimer-modal', 'sitemap-modal', 'guide-detail-modal'].forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            el.addEventListener('click', (e) => {
+                if (e.target === el) {
+                    closePolicyModal(id);
+                }
+            });
+        }
     });
 
     // Main search input
@@ -1206,16 +1385,13 @@ function setupEventListeners() {
             const val = customInput.value.trim();
             if (!val) return;
 
-            // Add to veggie shelf by default as a new chip
             state.fridgeIngredients.add(val);
             customInput.value = '';
             
-            // Re-render shelves
             renderFridgeShelves();
             updateFridgeCount();
             saveState();
 
-            // Highlight the new ingredient by finding it
             setTimeout(() => {
                 const newChip = document.querySelector(`.ingredient-chip[data-name="${val}"]`);
                 if (newChip) {
@@ -1235,7 +1411,6 @@ function setupEventListeners() {
         });
     }
 
-    // Reset fridge button click
     const resetFridgeBtn = document.getElementById('reset-fridge-btn');
     if (resetFridgeBtn) {
         resetFridgeBtn.addEventListener('click', () => {
@@ -1249,7 +1424,6 @@ function setupEventListeners() {
         });
     }
 
-    // Recommend recipe floating action
     const recommendRecipesBtn = document.getElementById('recommend-recipes-btn');
     if (recommendRecipesBtn) {
         recommendRecipesBtn.addEventListener('click', () => {
@@ -1275,7 +1449,6 @@ function setupEventListeners() {
         });
     }
 
-    // Modal Serving size click
     const servingMinus = document.getElementById('serving-minus');
     const servingPlus = document.getElementById('serving-plus');
     if (servingMinus) {
@@ -1285,7 +1458,6 @@ function setupEventListeners() {
         servingPlus.addEventListener('click', () => changeServing(1));
     }
 
-    // Modal interactive timer buttons
     const timerToggle = document.getElementById('timer-toggle-btn');
     const timerReset = document.getElementById('timer-reset-btn');
     if (timerToggle) {
@@ -1301,7 +1473,6 @@ function setupEventListeners() {
         timerReset.addEventListener('click', resetCookingTimer);
     }
 
-    // Modal like action
     const modalLikeBtn = document.getElementById('modal-like-btn');
     if (modalLikeBtn) {
         modalLikeBtn.addEventListener('click', (e) => {
@@ -1311,7 +1482,6 @@ function setupEventListeners() {
         });
     }
 
-    // Modal rating action (click stars)
     const starContainer = document.getElementById('star-rating-interactive');
     if (starContainer) {
         starContainer.addEventListener('click', (e) => {
@@ -1323,14 +1493,11 @@ function setupEventListeners() {
                 state.activeModalRecipe.userRating = rating;
                 renderInteractiveStars(rating);
                 saveState();
-                
-                // Trigger quick celebration particle
                 triggerParticleGlow(star);
             }
         });
     }
 
-    // Setup Partner Form Handler
     setupPartnerForm();
 }
 
@@ -1394,10 +1561,9 @@ function setupPartnerForm() {
 }
 
 // Switch between navigation tabs
-function switchTab(tabId) {
+function switchTab(tabId, scroll = true) {
     state.currentTab = tabId;
 
-    // Toggle nav active classes
     document.querySelectorAll('.nav-tab').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabId) {
             btn.classList.add('active');
@@ -1408,25 +1574,35 @@ function switchTab(tabId) {
 
     const gridView = document.getElementById('recipe-grid-view');
     const fridgeView = document.getElementById('fridge-view');
+    const guidesView = document.getElementById('guides-view');
     const partnerView = document.getElementById('partner-view');
     const filterSection = document.getElementById('filter-section-container');
     const gridTitle = document.getElementById('grid-view-title');
 
-    // Switch views visibility
     if (tabId === 'fridge') {
         if (gridView) gridView.style.display = 'none';
+        if (guidesView) guidesView.style.display = 'none';
         if (partnerView) partnerView.style.display = 'none';
         if (filterSection) filterSection.style.display = 'none';
         if (fridgeView) {
             fridgeView.style.display = 'block';
             fridgeView.classList.add('active-view');
         }
-        
-        // Execute fridge matching immediately
         renderFridgeMatchingResults();
+    } else if (tabId === 'guides') {
+        if (gridView) gridView.style.display = 'none';
+        if (fridgeView) fridgeView.style.display = 'none';
+        if (partnerView) partnerView.style.display = 'none';
+        if (filterSection) filterSection.style.display = 'none';
+        if (guidesView) {
+            guidesView.style.display = 'block';
+            guidesView.classList.add('active-view');
+        }
+        renderStorageGuides();
     } else if (tabId === 'partner') {
         if (gridView) gridView.style.display = 'none';
         if (fridgeView) fridgeView.style.display = 'none';
+        if (guidesView) guidesView.style.display = 'none';
         if (filterSection) filterSection.style.display = 'none';
         if (partnerView) {
             partnerView.style.display = 'block';
@@ -1434,6 +1610,7 @@ function switchTab(tabId) {
         }
     } else {
         if (fridgeView) fridgeView.style.display = 'none';
+        if (guidesView) guidesView.style.display = 'none';
         if (partnerView) partnerView.style.display = 'none';
         if (filterSection) filterSection.style.display = 'flex';
         if (gridView) {
@@ -1441,7 +1618,6 @@ function switchTab(tabId) {
             gridView.classList.add('active-view');
         }
 
-        // Set appropriate grid title
         if (gridTitle) {
             if (tabId === 'all') gridTitle.innerHTML = '추천 레시피';
             if (tabId === 'quick') gridTitle.innerHTML = '⚡ 바쁜 일상을 위한 <span class="accent-text">10분한끼</span>';
@@ -1449,17 +1625,15 @@ function switchTab(tabId) {
             if (tabId === 'popular') gridTitle.innerHTML = '🔥 실시간 가장 핫한 <span class="accent-text">인기메뉴</span>';
         }
 
-        // Re-render recipes list
         renderRecipeGrid();
     }
 
-    // Scroll slightly down to focus on content
-    const headerHeight = document.querySelector('.header').offsetHeight;
-    const heroHeight = document.querySelector('.hero-section').offsetHeight;
-    
-    // Switch scroll behavior based on whether user is just landing or clicking
-    window.scrollTo({
-        top: heroHeight - headerHeight + 50,
-        behavior: 'smooth'
-    });
+    if (scroll) {
+        const headerHeight = document.querySelector('.header').offsetHeight;
+        const heroHeight = document.querySelector('.hero-section').offsetHeight;
+        window.scrollTo({
+            top: heroHeight - headerHeight + 50,
+            behavior: 'smooth'
+        });
+    }
 }
