@@ -502,7 +502,7 @@ function handleHashRoute() {
     } else if (rawHash === 'sitemap') {
         openPolicyModal('sitemap-modal');
     } else if (['all', 'quick', 'fit', 'fridge', 'guides', 'popular', 'partner'].includes(rawHash)) {
-        switchTab(rawHash, false);
+        switchTab(rawHash, true);
     }
 }
 
@@ -1274,9 +1274,13 @@ function setupEventListeners() {
     
     // Tab Nav clicks
     document.querySelectorAll('.nav-tab').forEach(tab => {
-        tab.addEventListener('click', () => {
+        tab.addEventListener('click', (e) => {
+            e.preventDefault();
             const targetTab = tab.getAttribute('data-tab');
-            window.location.hash = targetTab;
+            switchTab(targetTab, true);
+            if (window.location.hash !== '#' + targetTab) {
+                history.pushState(null, null, '#' + targetTab);
+            }
         });
     });
 
@@ -1284,35 +1288,66 @@ function setupEventListeners() {
     if (logoBtn) {
         logoBtn.addEventListener('click', (e) => {
             e.preventDefault();
-            window.location.hash = 'all';
+            switchTab('all', true);
+            if (window.location.hash !== '#all') {
+                history.pushState(null, null, '#all');
+            }
         });
     }
 
     const heroFridgeBtn = document.getElementById('hero-fridge-btn');
     if (heroFridgeBtn) {
-        heroFridgeBtn.addEventListener('click', () => window.location.hash = 'fridge');
+        heroFridgeBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab('fridge', true);
+            if (window.location.hash !== '#fridge') {
+                history.pushState(null, null, '#fridge');
+            }
+        });
     }
 
     const heroPopularBtn = document.getElementById('hero-popular-btn');
     if (heroPopularBtn) {
-        heroPopularBtn.addEventListener('click', () => window.location.hash = 'popular');
+        heroPopularBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab('popular', true);
+            if (window.location.hash !== '#popular') {
+                history.pushState(null, null, '#popular');
+            }
+        });
     }
 
     const heroGuidesBtn = document.getElementById('hero-guides-btn');
     if (heroGuidesBtn) {
-        heroGuidesBtn.addEventListener('click', () => window.location.hash = 'guides');
+        heroGuidesBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab('guides', true);
+            if (window.location.hash !== '#guides') {
+                history.pushState(null, null, '#guides');
+            }
+        });
     }
 
     const fridgeShortcutBtn = document.getElementById('fridge-shortcut-btn');
     if (fridgeShortcutBtn) {
-        fridgeShortcutBtn.addEventListener('click', () => window.location.hash = 'fridge');
+        fridgeShortcutBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            switchTab('fridge', true);
+            if (window.location.hash !== '#fridge') {
+                history.pushState(null, null, '#fridge');
+            }
+        });
     }
 
     // Footer links click
     document.querySelectorAll('.footer-tab-link').forEach(link => {
         link.addEventListener('click', (e) => {
+            e.preventDefault();
             const target = link.getAttribute('data-tab');
-            window.location.hash = target;
+            switchTab(target, true);
+            if (window.location.hash !== '#' + target) {
+                history.pushState(null, null, '#' + target);
+            }
         });
     });
 
@@ -1629,11 +1664,17 @@ function switchTab(tabId, scroll = true) {
     }
 
     if (scroll) {
-        const headerHeight = document.querySelector('.header').offsetHeight;
-        const heroHeight = document.querySelector('.hero-section').offsetHeight;
-        window.scrollTo({
-            top: heroHeight - headerHeight + 50,
-            behavior: 'smooth'
-        });
+        const header = document.querySelector('.header');
+        const headerHeight = header ? header.offsetHeight : 70;
+        const mainContainer = document.querySelector('.main-container');
+        if (mainContainer) {
+            const rect = mainContainer.getBoundingClientRect();
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const targetTop = rect.top + scrollTop - headerHeight - 15;
+            window.scrollTo({
+                top: Math.max(0, targetTop),
+                behavior: 'smooth'
+            });
+        }
     }
 }
