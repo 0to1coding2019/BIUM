@@ -45,7 +45,7 @@ const RECIPE_DATA = [
         category: "quick",
         categoryKo: "10분한끼",
         description: "추억의 맛이자 소울 푸드. 고소한 버터와 참기름이 입안 가득 감싸안는 초간단 한끼 식사입니다.",
-        image: "images/kimchi_fried_rice.jpg", // reuse or elegant container styling
+        image: "images/butter_egg_rice.jpg",
         prepTime: 5,
         rating: 4.9,
         likes: 312,
@@ -118,7 +118,7 @@ const RECIPE_DATA = [
         category: "fit",
         categoryKo: "핏한끼",
         description: "양배추의 달큰함과 담백한 닭가슴살의 깔끔한 조합. 포만감은 가득하면서 칼로리 부담은 낮췄습니다.",
-        image: "images/salmon_bowl.jpg", // styling handles visuals
+        image: "images/chicken_cabbage_roll.jpg",
         prepTime: 15,
         rating: 4.6,
         likes: 189,
@@ -228,7 +228,7 @@ const RECIPE_DATA = [
         category: "fridge",
         categoryKo: "냉털",
         description: "비 내리는 날 어울리는 고소하고 매콤한 퓨전 전. 부침가루만 있으면 냉장고 속 신김치와 모짜렐라 치즈로 환상의 조화를 만듭니다.",
-        image: "images/kimchi_fried_rice.jpg",
+        image: "images/kimchi_pancake.jpg",
         prepTime: 15,
         rating: 4.8,
         likes: 288,
@@ -263,7 +263,7 @@ const RECIPE_DATA = [
         category: "popular",
         categoryKo: "인기메뉴",
         description: "요즘 대세 트렌디 푸드! 고추장의 매콤함과 부드러운 생크림이 만나 꾸덕하고 중독성 강한 로제 소스 떡볶이를 완성합니다.",
-        image: "images/kimchi_fried_rice.jpg",
+        image: "images/rose_tteokbokki.jpg",
         prepTime: 15,
         rating: 4.9,
         likes: 498,
@@ -1329,6 +1329,68 @@ function setupEventListeners() {
             }
         });
     }
+
+    // Setup Partner Form Handler
+    setupPartnerForm();
+}
+
+function setupPartnerForm() {
+    const form = document.getElementById('partner-form');
+    const statusMsg = document.getElementById('partner-form-status');
+    const submitBtn = document.getElementById('partner-submit-btn');
+
+    if (!form) return;
+
+    form.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        if (submitBtn) {
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> 전송 중...';
+        }
+
+        const formData = new FormData(form);
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
+
+            if (response.ok) {
+                if (statusMsg) {
+                    statusMsg.className = 'form-status-msg success';
+                    statusMsg.innerHTML = '<i class="fa-solid fa-circle-check"></i> <strong>제휴 문의가 성공적으로 접수되었습니다!</strong><br>작성해주신 연락처 및 이메일로 담당자가 검토 후 빠른 시일 내에 안내해 드리겠습니다.';
+                    statusMsg.style.display = 'block';
+                }
+                form.reset();
+            } else {
+                const data = await response.json();
+                let errorText = '문의 제출 중 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
+                if (data && data.errors && data.errors.length > 0) {
+                    errorText = data.errors.map(err => err.message).join(', ');
+                }
+                if (statusMsg) {
+                    statusMsg.className = 'form-status-msg error';
+                    statusMsg.innerHTML = `<i class="fa-solid fa-triangle-exclamation"></i> <strong>오류 발생:</strong> ${errorText}`;
+                    statusMsg.style.display = 'block';
+                }
+            }
+        } catch (error) {
+            if (statusMsg) {
+                statusMsg.className = 'form-status-msg error';
+                statusMsg.innerHTML = '<i class="fa-solid fa-triangle-exclamation"></i> <strong>네트워크 오류:</strong> 인터넷 연결을 확인하고 다시 시도해 주세요.';
+                statusMsg.style.display = 'block';
+            }
+        } finally {
+            if (submitBtn) {
+                submitBtn.disabled = false;
+                submitBtn.innerHTML = '<i class="fa-solid fa-paper-plane"></i> 제휴 문의 보내기';
+            }
+        }
+    });
 }
 
 // Switch between navigation tabs
@@ -1346,12 +1408,14 @@ function switchTab(tabId) {
 
     const gridView = document.getElementById('recipe-grid-view');
     const fridgeView = document.getElementById('fridge-view');
+    const partnerView = document.getElementById('partner-view');
     const filterSection = document.getElementById('filter-section-container');
     const gridTitle = document.getElementById('grid-view-title');
 
     // Switch views visibility
     if (tabId === 'fridge') {
         if (gridView) gridView.style.display = 'none';
+        if (partnerView) partnerView.style.display = 'none';
         if (filterSection) filterSection.style.display = 'none';
         if (fridgeView) {
             fridgeView.style.display = 'block';
@@ -1360,8 +1424,17 @@ function switchTab(tabId) {
         
         // Execute fridge matching immediately
         renderFridgeMatchingResults();
+    } else if (tabId === 'partner') {
+        if (gridView) gridView.style.display = 'none';
+        if (fridgeView) fridgeView.style.display = 'none';
+        if (filterSection) filterSection.style.display = 'none';
+        if (partnerView) {
+            partnerView.style.display = 'block';
+            partnerView.classList.add('active-view');
+        }
     } else {
         if (fridgeView) fridgeView.style.display = 'none';
+        if (partnerView) partnerView.style.display = 'none';
         if (filterSection) filterSection.style.display = 'flex';
         if (gridView) {
             gridView.style.display = 'block';

@@ -37,6 +37,7 @@
                 <button class="nav-tab" data-tab="fit" id="tab-fit">핏한끼</button>
                 <button class="nav-tab" data-tab="fridge" id="tab-fridge">냉털</button>
                 <button class="nav-tab" data-tab="popular" id="tab-popular">인기메뉴</button>
+                <button class="nav-tab" data-tab="partner" id="tab-partner"><i class="fa-solid fa-handshake"></i> 제휴문의</button>
             </nav>
             
             <div class="header-actions">
@@ -185,6 +186,136 @@
             </div>
         </div>
 
+        <!-- Partnership Inquiry View (제휴문의) -->
+        <div class="partner-view-container" id="partner-view" style="display: none;">
+            <div class="partner-card">
+                <div class="partner-header">
+                    <div class="partner-badge">
+                        <i class="fa-solid fa-handshake"></i> BIUM PARTNERSHIP
+                    </div>
+                    <h2 class="partner-title">제휴 및 사업 문의</h2>
+                    <p class="partner-desc">
+                        BIUM과 함께 브랜드 가치를 높이고 미식 생태계를 넓혀갈 파트너를 찾습니다.<br>
+                        식재료 협찬, 컨텐츠 제휴, B2B 마케팅 등 자유롭게 제안해 주세요.
+                    </p>
+                </div>
+
+                <!-- Formspree Form Integration -->
+                <form id="partner-form" action="https://formspree.io/f/xdaqdlkj" method="POST" class="partner-form">
+                    <!-- Formspree hidden config inputs -->
+                    <input type="hidden" name="_subject" value="[BIUM] 새로운 제휴 문의가 접수되었습니다.">
+                    
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="partner-company" class="form-label">
+                                <i class="fa-regular fa-building"></i> 업체 / 기관명 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="partner-company" name="company" class="form-input" placeholder="예: (주)비움푸드" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partner-name" class="form-label">
+                                <i class="fa-regular fa-user"></i> 담당자 성함 <span class="required">*</span>
+                            </label>
+                            <input type="text" id="partner-name" name="name" class="form-input" placeholder="예: 홍길동 팀장" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partner-email" class="form-label">
+                                <i class="fa-regular fa-envelope"></i> 회신 이메일 <span class="required">*</span>
+                            </label>
+                            <input type="email" id="partner-email" name="email" class="form-input" placeholder="example@company.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="partner-phone" class="form-label">
+                                <i class="fa-solid fa-phone"></i> 연락처 <span class="required">*</span>
+                            </label>
+                            <input type="tel" id="partner-phone" name="phone" class="form-input" placeholder="010-0000-0000" required>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-category" class="form-label">
+                            <i class="fa-solid fa-layer-group"></i> 제휴 문의 유형 <span class="required">*</span>
+                        </label>
+                        <select id="partner-category" name="category" class="form-select" required>
+                            <option value="" disabled selected>제휴 유형을 선택해 주세요</option>
+                            <option value="식재료/브랜드 협찬">식재료 & 브랜드 협찬/입점</option>
+                            <option value="셰프/레시피 콘텐츠">셰프 & 레시피 콘텐츠 공동 제작</option>
+                            <option value="마케팅/프로모션">마케팅 & 프로모션 제휴</option>
+                            <option value="B2B/서비스 연동">B2B / 플랫폼 서비스 연동</option>
+                            <option value="기타 문의">기타 제휴 문의</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-subject" class="form-label">
+                            <i class="fa-regular fa-paper-plane"></i> 제안 제목 <span class="required">*</span>
+                        </label>
+                        <input type="text" id="partner-subject" name="subject" class="form-input" placeholder="제휴 제안의 핵심 내용을 요약해 주세요" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="partner-message" class="form-label">
+                            <i class="fa-regular fa-comment-dots"></i> 제안 및 문의 상세 내용 <span class="required">*</span>
+                        </label>
+                        <textarea id="partner-message" name="message" class="form-textarea" rows="6" placeholder="제안 배경, 주요 제안 내용, 희망 진행 일정 등을 상세히 적어주시면 빠른 검토에 도움이 됩니다." required></textarea>
+                    </div>
+
+                    <div class="form-privacy-card">
+                        <label class="checkbox-container">
+                            <input type="checkbox" id="partner-privacy" name="_privacy_consent" required>
+                            <span class="custom-checkbox"><i class="fa-solid fa-check"></i></span>
+                            <span class="checkbox-label-text">
+                                [필수] 개인정보 수집 및 이용에 동의합니다. (문의 처리 및 답신 목적으로만 활용됩니다)
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="form-status-msg" id="partner-form-status" style="display: none;"></div>
+
+                    <div class="form-actions">
+                        <button type="submit" class="btn btn-primary form-submit-btn" id="partner-submit-btn">
+                            <i class="fa-solid fa-paper-plane"></i> 제휴 문의 보내기
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Disqus Comments Section -->
+        <section class="disqus-comments-section" id="comments-section">
+            <div class="disqus-card">
+                <div class="disqus-header">
+                    <div class="disqus-badge">
+                        <i class="fa-solid fa-comments"></i> BIUM COMMUNITY
+                    </div>
+                    <h2 class="disqus-title">미식가들의 실시간 소통 & 댓글</h2>
+                    <p class="disqus-desc">
+                        BIUM 추천 레시피 후기와 나만의 냉털 꿀팁을 자유롭게 나눠보세요.
+                    </p>
+                </div>
+                <div id="disqus_thread"></div>
+                <script>
+                    /**
+                    *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+                    *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables    */
+                    var disqus_config = function () {
+                        this.page.url = window.location.href;  // Replace PAGE_URL with your page's canonical URL variable
+                        this.page.identifier = 'bium_main_comments'; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+                    };
+                    (function() { // DON'T EDIT BELOW THIS LINE
+                    var d = document, s = d.createElement('script');
+                    s.src = 'https://bium-1.disqus.com/embed.js';
+                    s.setAttribute('data-timestamp', +new Date());
+                    (d.head || d.body).appendChild(s);
+                    })();
+                </script>
+                <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+            </div>
+        </section>
+
     </main>
 
     <!-- Detail Modal -->
@@ -324,6 +455,7 @@
                 </div>
                 <div class="footer-link-group">
                     <h4>서비스 소개</h4>
+                    <a href="#" class="footer-tab-link" data-tab="partner">제휴 문의</a>
                     <a href="#">브랜드 스토리</a>
                     <a href="#">이용약관</a>
                     <a href="#">개인정보처리방침</a>
@@ -336,6 +468,6 @@
     </footer>
 
     <!-- Custom JS -->
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>
