@@ -25,6 +25,14 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://0to1coding2019.github.io/BIUM/">
 
+    <!-- Progressive Web App (PWA) Manifest & iOS App Meta Tags -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#0a0d0a">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="BIUM">
+    <link rel="apple-touch-icon" href="images/avocado_toast.jpg">
+
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -874,7 +882,85 @@
         </div>
     </div>
 
+    <!-- PWA Install Floating Banner -->
+    <div class="pwa-install-banner" id="pwa-install-banner" style="display: none;">
+        <div class="pwa-banner-content">
+            <i class="fa-solid fa-mobile-screen-button pwa-banner-icon"></i>
+            <div class="pwa-banner-text">
+                <strong>BIUM 공식 앱 설치</strong>
+                <span>홈 화면에 추가하여 1초만에 바로 실행하세요!</span>
+            </div>
+        </div>
+        <div class="pwa-banner-actions">
+            <button class="btn btn-primary btn-sm" id="pwa-install-trigger-btn">
+                <i class="fa-solid fa-download"></i> 앱 설치
+            </button>
+            <button class="pwa-close-btn" id="pwa-banner-close-btn" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile App Bottom Navigation Bar -->
+    <nav class="mobile-bottom-nav">
+        <button class="mobile-nav-item active" data-tab="all" id="mobile-tab-all">
+            <i class="fa-solid fa-house"></i>
+            <span>홈</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="quick" id="mobile-tab-quick">
+            <i class="fa-solid fa-bolt"></i>
+            <span>10분한끼</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="fit" id="mobile-tab-fit">
+            <i class="fa-solid fa-seedling"></i>
+            <span>핏한끼</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="fridge" id="mobile-tab-fridge">
+            <i class="fa-solid fa-kitchen-set"></i>
+            <span>냉털</span>
+        </button>
+        <button class="mobile-nav-item" data-tab="guides" id="mobile-tab-guides">
+            <i class="fa-solid fa-book-open"></i>
+            <span>보관백과</span>
+        </button>
+        <button class="mobile-nav-item" id="mobile-nav-install-btn">
+            <i class="fa-solid fa-mobile-screen"></i>
+            <span>앱설치</span>
+        </button>
+    </nav>
+
+    <!-- App Installation Modal (Guide for iOS & Android) -->
+    <div class="modal-overlay" id="app-install-modal">
+        <div class="modal-card policy-modal-card">
+            <button class="modal-close" id="install-modal-close-btn" aria-label="닫기">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div class="policy-modal-header">
+                <h3><i class="fa-solid fa-mobile-screen-button text-gold"></i> BIUM 공식 앱 설치 안내</h3>
+                <p class="policy-subtitle">스마트폰 홈 화면에 BIUM 앱을 추가하여 언제든 바로 이용해보세요.</p>
+            </div>
+            <div class="policy-modal-body">
+                <div class="install-guide-box">
+                    <h4><i class="fa-brands fa-android text-gold"></i> 안드로이드 / 크롬 (Android & Chrome)</h4>
+                    <p>아래 <strong>[즉시 앱 설치하기]</strong> 버튼을 누르시면 홈 화면에 전용 앱이 자동 설치됩니다.</p>
+                    <button class="btn btn-primary btn-block style-margin-y" id="modal-pwa-install-btn">
+                        <i class="fa-solid fa-download"></i> BIUM 앱 즉시 설치하기
+                    </button>
+                </div>
+                <div class="install-guide-box style-margin-top-sm">
+                    <h4><i class="fa-brands fa-apple text-gold"></i> 아이폰 / 사파리 (iOS & Safari)</h4>
+                    <ol class="install-steps-list">
+                        <li>사파리 브라우저 하단의 <strong>[공유 버튼 (<i class="fa-solid fa-arrow-up-from-bracket"></i>)]</strong>을 누릅니다.</li>
+                        <li>메뉴를 위로 스크롤하여 <strong>[홈 화면에 추가 (<i class="fa-regular fa-square-plus"></i>)]</strong>를 선택합니다.</li>
+                        <li>우측 상단의 <strong>[추가]</strong> 버튼을 누르면 아이폰 홈 화면에 BIUM 앱이 설치됩니다.</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Custom JS Module -->
     <script type="module" src="app.js"></script>
 </body>
 </html>
+

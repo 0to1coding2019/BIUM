@@ -412,6 +412,7 @@ document.addEventListener('DOMContentLoaded', () => {
     renderStorageGuides();
     setupEventListeners();
     updateFridgeCount();
+    initPWA();
 
     // Route based on URL hash
     window.addEventListener('hashchange', handleHashRoute);
@@ -1272,8 +1273,8 @@ function triggerTimerFinishParticles() {
 
 function setupEventListeners() {
     
-    // Tab Nav clicks
-    document.querySelectorAll('.nav-tab').forEach(tab => {
+    // Tab Nav clicks (Header & Mobile Bottom Nav)
+    document.querySelectorAll('.nav-tab, .mobile-nav-item[data-tab]').forEach(tab => {
         tab.addEventListener('click', (e) => {
             e.preventDefault();
             const targetTab = tab.getAttribute('data-tab');
@@ -1599,7 +1600,7 @@ function setupPartnerForm() {
 function switchTab(tabId, scroll = true) {
     state.currentTab = tabId;
 
-    document.querySelectorAll('.nav-tab').forEach(btn => {
+    document.querySelectorAll('.nav-tab, .mobile-nav-item[data-tab]').forEach(btn => {
         if (btn.getAttribute('data-tab') === tabId) {
             btn.classList.add('active');
         } else {
@@ -1678,3 +1679,53 @@ function switchTab(tabId, scroll = true) {
         }
     }
 }
+
+// --- 11. PWA Service Worker & Installation Handler ---
+function initPWA() {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('./sw.js')
+                .then(reg => console.log('[BIUM PWA] SW registered:', reg.scope))
+                .catch(err => console.warn('[BIUM PWA] SW registration failed:', err));
+        });
+    }
+
+    let deferredPrompt = null;
+    const banner = document.getElementById('pwa-install-banner');
+    const triggerBtn = document.getElementById('pwa-install-trigger-btn');
+    const modalInstallBtn = document.getElementById('modal-pwa-install-btn');
+
+    window.addEventListener('beforeinstallprompt', (e) => {
+        e.preventDefault();
+        deferredPrompt = e;
+        if (banner) banner.style.display = 'flex';
+    });
+
+    const triggerInstall = async () => {
+        if (deferredPrompt) {
+            deferredPrompt.prompt();
+            const { outcome } = await deferredPrompt.userChoice;
+            console.log('[BIUM PWA] Install choice outcome:', outcome);
+            deferredPrompt = null;
+            if (banner) banner.style.display = 'none';
+        } else {
+            openPolicyModal('app-install-modal');
+        }
+    };
+
+    if (triggerBtn) triggerBtn.addEventListener('click', triggerInstall);
+    if (modalInstallBtn) modalInstallBtn.addEventListener('click', triggerInstall);
+
+    document.getElementById('pwa-banner-close-btn')?.addEventListener('click', () => {
+        if (banner) banner.style.display = 'none';
+    });
+
+    document.getElementById('mobile-nav-install-btn')?.addEventListener('click', () => {
+        openPolicyModal('app-install-modal');
+    });
+
+    document.getElementById('install-modal-close-btn')?.addEventListener('click', () => {
+        closePolicyModal('app-install-modal');
+    });
+}
+

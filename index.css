@@ -2136,4 +2136,168 @@ button {
     transform: translateX(4px);
 }
 
+/* --- Progressive Web App (PWA) & Mobile App Styles --- */
+
+/* PWA Floating Install Banner */
+.pwa-install-banner {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 2rem);
+    max-width: 550px;
+    background: rgba(18, 24, 19, 0.95);
+    backdrop-filter: blur(16px);
+    border: 1px solid var(--accent-gold);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), var(--glow-gold);
+    border-radius: var(--radius-lg);
+    padding: 0.9rem 1.2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 2500;
+    animation: slideUp 0.4s ease-out;
+}
+
+.pwa-banner-content {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.pwa-banner-icon {
+    font-size: 1.6rem;
+    color: var(--accent-gold);
+}
+
+.pwa-banner-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.pwa-banner-text strong {
+    font-size: 0.95rem;
+    color: var(--text-primary);
+}
+
+.pwa-banner-text span {
+    font-size: 0.8rem;
+    color: var(--text-secondary);
+}
+
+.pwa-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+.pwa-close-btn {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1.1rem;
+    cursor: pointer;
+    padding: 0.3rem;
+    transition: var(--transition-smooth);
+}
+
+.pwa-close-btn:hover {
+    color: var(--text-primary);
+}
+
+/* Mobile Bottom App Navigation Bar */
+.mobile-bottom-nav {
+    display: none; /* hidden on desktop */
+}
+
+@media (max-width: 768px) {
+    body {
+        padding-bottom: 70px;
+    }
+
+    .pwa-install-banner {
+        bottom: 75px;
+    }
+
+    .mobile-bottom-nav {
+        display: flex;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 65px;
+        background: rgba(10, 13, 10, 0.92);
+        backdrop-filter: blur(16px);
+        border-top: 1px solid var(--border-light);
+        z-index: 2000;
+        justify-content: space-around;
+        align-items: center;
+        padding: 0 0.5rem;
+    }
+
+    .mobile-nav-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 0.25rem;
+        background: none;
+        border: none;
+        color: var(--text-muted);
+        font-size: 0.7rem;
+        font-weight: 500;
+        cursor: pointer;
+        padding: 0.4rem 0.6rem;
+        border-radius: var(--radius-sm);
+        transition: var(--transition-smooth);
+        flex: 1;
+    }
+
+    .mobile-nav-item i {
+        font-size: 1.15rem;
+    }
+
+    .mobile-nav-item.active {
+        color: var(--accent-gold);
+        font-weight: 600;
+    }
+
+    .mobile-nav-item:active {
+        transform: scale(0.92);
+    }
+}
+
+/* Install Guide Modal Styling */
+.install-guide-box {
+    background: rgba(10, 13, 10, 0.6);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius-md);
+    padding: 1.2rem;
+}
+
+.install-guide-box h4 {
+    font-size: 1.05rem;
+    color: var(--text-primary);
+    margin-bottom: 0.6rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.install-steps-list {
+    margin-left: 1.2rem;
+    line-height: 1.7;
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.style-margin-y {
+    margin: 1rem 0 0.5rem 0;
+}
+
+.style-margin-top-sm {
+    margin-top: 1.2rem;
+}
+
+
 
